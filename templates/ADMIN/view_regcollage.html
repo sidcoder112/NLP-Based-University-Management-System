@@ -1,0 +1,43 @@
+{% extends 'ADMIN/index.html' %}
+{% block body %}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body><table width="200" border="1" class="table table-hover">
+  <tr style="color:orangered;text-align: center">
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Phone</th>
+    <th scope="col">Place</th>
+    <th scope="col">Post</th>
+    <th scope="col">Pin</th>
+    <th scope="col">&nbsp;</th>
+    <th scope="col"></th>
+    <th scope="col">&nbsp;</th>
+  </tr>
+    {% for i in data %}
+  <tr style="color: white">
+  <td>{{ forloop.counter }}&nbsp;</td>
+    <td>{{ i.name }}</td>
+    <td>{{ i.email }}&nbsp;</td>
+    <td>{{ i.phone }}&nbsp;</td>
+    <td>{{ i.place }}&nbsp;</td>
+    <td>&nbsp;{{ i.post }}</td>
+    <td>{{ i.pin }}&nbsp;</td>
+      <td><a href="http://maps.google.com/?q={{ i.latitude }},{{ i.longitude }}" target="_blank">Locate</a></td>
+    <td><a href="/admin_approve_college/{{ i.LOGIN.id }}#admin" class="btn btn-success" style="width: 90%;">Approve</a></td>
+    <td><a href="/admin_reject_college/{{ i.LOGIN.id }}#admin" onclick="return confirm('Are you sure?')" class="btn btn-danger" style="width: 90%;">Reject</a></td>
+  </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
+{% endblock %}

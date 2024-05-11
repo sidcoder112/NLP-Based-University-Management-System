@@ -1,0 +1,33 @@
+{% extends "college/index.html" %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <style>
+        tr{color: white}
+    </style>
+
+</head>
+
+<body><table width="200" border="1" class="table table-hover">
+  <tr style="color:orangered;text-align: center">
+    <th scope="col"><h3>#</h3></th>
+    <th scope="col">Subject</th>
+    <th scope="col">Mark</th>
+  </tr>
+    {% for i in data %}
+  <tr style="color: white">
+    <td>{{ forloop.counter }}&nbsp;</td>
+    <td>{{ i.SUBJECT.subject_name}}&nbsp;</td>
+    <td>{{ i.max_mark}}&nbsp;</td>
+    <td><a href="/delete_internal_mark/{{ i.id }}" class="btn btn-success" style="width: 90%;">Delete</a> </td>
+  </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
+{% endblock %}

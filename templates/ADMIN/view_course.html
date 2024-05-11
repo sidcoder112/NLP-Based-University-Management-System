@@ -1,0 +1,41 @@
+{% extends 'ADMIN/index.html' %}
+{% block body %}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1" class="table table-hover">
+    <tr style="color:orangered;text-align: center">
+      <th scope="row">#</th>
+      <th>Course name</th>
+      <th>Course code</th>
+      <th>Stream</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+    </tr>
+      {% for i in data %}
+    <tr style="color: white">
+      <td>{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.Course_Name }}</td>
+      <td>{{ i.Course_code }}&nbsp;</td>
+      <td>{{ i.Stream }}&nbsp;</td>
+      <td><a href="/edit_course/{{ i.id }}#admin" class="btn btn-success mb-3" style="width: 90%;">Edit</a>
+        <p><a href="/delete_Course/{{ i.id }}#admin" class="btn btn-danger mb-3" style="width: 90%;">Delete</a></p></td>
+    <td>  </p><a href="/Subject/{{ i.id }}#admin" class="btn btn-warning" style="width: 90%;">Add subject</a></p>
+    <p> <a href="/View_subject/{{ i.id }}#admin" class="btn btn-info" style="width: 90%;">View subject</a></p></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}
